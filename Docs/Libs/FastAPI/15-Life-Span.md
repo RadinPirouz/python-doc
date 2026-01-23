@@ -1,4 +1,4 @@
-# FastAPI – Application Lifespan (Startup & Shutdown Events)
+    # FastAPI – Application Lifespan (Startup & Shutdown Events)
 
 FastAPI allows you to run code when your application **starts up** or **shuts down**.
 This is useful for initializing resources, database connections, caches, or background tasks.
