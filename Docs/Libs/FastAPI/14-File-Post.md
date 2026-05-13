@@ -1,42 +1,79 @@
 # FastAPI – POST Requests with File Uploads
 
-This document demonstrates how to handle **file uploads** in FastAPI.
-File uploads are essential for APIs that need to receive **images, documents, or binary data** from clients.
+## Overview
+
+This document explains how to handle file uploads in FastAPI using `POST` requests.
+
+File upload endpoints are commonly used when an API needs to receive:
+
+```text
+Images
+Documents
+PDF files
+Text files
+Binary files
+Multiple files in one request
+```
+
+FastAPI supports file uploads using:
+
+```python
+File
+UploadFile
+```
+
+For real applications, `UploadFile` is usually preferred because it provides file metadata and handles large files more efficiently.
 
 ---
 
-## Example Application
+# 1. Required Package
+
+FastAPI file uploads require `python-multipart`.
+
+Install it with:
+
+```bash
+pip install python-multipart
+```
+
+If you are using the standard FastAPI installation, it may already be included:
+
+```bash
+pip install "fastapi[standard]"
+```
+
+---
+
+# 2. Example Application
 
 Create or update `main.py` with the following content:
 
 ```python
-from fastapi import FastAPI, File, UploadFile, status
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, File, UploadFile
 from typing import List
 
 app = FastAPI()
-
-users_db = [
-    {"id": "1", "name": "radin", "password": "123"}
-]
 
 
 @app.post("/file")
 def upload_file_bytes(file: bytes = File(...)):
     """
-    Receive file as raw bytes.
+    Receive a file as raw bytes.
     Returns the size of the uploaded file.
     """
-    return {"file_size": len(file)}
+    return {
+        "file_size": len(file)
+    }
 
 
 @app.post("/uploadfile")
-def upload_file_uploadfile(file: UploadFile):
+async def upload_file_uploadfile(file: UploadFile):
     """
-    Receive file as UploadFile.
-    Returns filename, content type, and size.
+    Receive a file as an UploadFile object.
+    Returns filename, content type, and file size.
     """
-    content = file.read()
+    content = await file.read()
+
     return {
         "filename": file.filename,
         "content_type": file.content_type,
@@ -45,35 +82,52 @@ def upload_file_uploadfile(file: UploadFile):
 
 
 @app.post("/uploadmultifile")
-def upload_multiple_files(files: List[UploadFile]):
+async def upload_multiple_files(files: List[UploadFile]):
     """
-    Receive multiple files as UploadFile list.
+    Receive multiple files as UploadFile objects.
     Returns filenames and content types.
     """
-    return [
-        {"filename": file.filename, "content_type": file.content_type}
-        for file in files
-    ]
+    result = []
+
+    for file in files:
+        result.append({
+            "filename": file.filename,
+            "content_type": file.content_type
+        })
+
+    return result
 ```
 
 ---
 
-## File Upload Methods
+# 3. File Upload as Bytes
 
-### 1. `File` as Bytes
+## Endpoint
 
-* Accepts the uploaded file as raw bytes
-* Suitable for small files or direct in-memory processing
-* Fast but lacks metadata (filename, content type)
+```python
+@app.post("/file")
+def upload_file_bytes(file: bytes = File(...)):
+    return {
+        "file_size": len(file)
+    }
+```
 
-**Example Request (curl):**
+This endpoint receives the uploaded file as raw bytes.
+
+## Endpoint URL
+
+```http
+POST /file
+```
+
+## Example Request
 
 ```bash
 curl -X POST "http://localhost:8000/file" \
   -F "file=@example.txt"
 ```
 
-**Response:**
+## Example Response
 
 ```json
 {
@@ -81,23 +135,71 @@ curl -X POST "http://localhost:8000/file" \
 }
 ```
 
+## Explanation
+
+```python
+file: bytes = File(...)
+```
+
+This tells FastAPI to expect a file field named `file`.
+
+The uploaded file is loaded directly into memory as bytes.
+
+## When to Use This Method
+
+This method is suitable for:
+
+```text
+Small files
+Simple testing
+Direct in-memory processing
+Quick file size checks
+```
+
+## Limitation
+
+This method does not provide file metadata such as:
+
+```text
+Original filename
+Content type
+File headers
+```
+
+It also loads the whole file into memory, so it is not ideal for large files.
+
 ---
 
-### 2. `UploadFile`
+# 4. File Upload with `UploadFile`
 
-* Accepts file as `UploadFile` object
-* Provides metadata: `filename` and `content_type`
-* Supports `.read()`, `.write()`, and `.seek()` operations
-* More efficient for large files (uses spooled temporary files)
+## Endpoint
 
-**Example Request (curl):**
+```python
+@app.post("/uploadfile")
+async def upload_file_uploadfile(file: UploadFile):
+    content = await file.read()
+
+    return {
+        "filename": file.filename,
+        "content_type": file.content_type,
+        "file_size": len(content)
+    }
+```
+
+## Endpoint URL
+
+```http
+POST /uploadfile
+```
+
+## Example Request
 
 ```bash
 curl -X POST "http://localhost:8000/uploadfile" \
   -F "file=@example.txt"
 ```
 
-**Response:**
+## Example Response
 
 ```json
 {
@@ -109,13 +211,72 @@ curl -X POST "http://localhost:8000/uploadfile" \
 
 ---
 
-### 3. Multiple File Uploads
+# 5. Why Use `UploadFile`
 
-* Accepts a list of `UploadFile`
-* Allows uploading multiple files in one request
-* Useful for batch uploads or form submissions
+`UploadFile` is better than raw bytes for most real APIs.
 
-**Example Request (curl):**
+It provides useful metadata:
+
+```python
+file.filename
+file.content_type
+file.file
+```
+
+It also supports file operations such as:
+
+```python
+await file.read()
+await file.write()
+await file.seek()
+await file.close()
+```
+
+## Important Note
+
+When using `UploadFile.read()`, the endpoint should usually be asynchronous:
+
+```python
+async def upload_file_uploadfile(file: UploadFile):
+    content = await file.read()
+```
+
+This is better than writing:
+
+```python
+def upload_file_uploadfile(file: UploadFile):
+    content = file.read()
+```
+
+because `file.read()` is asynchronous and should be awaited.
+
+---
+
+# 6. Multiple File Uploads
+
+## Endpoint
+
+```python
+@app.post("/uploadmultifile")
+async def upload_multiple_files(files: List[UploadFile]):
+    result = []
+
+    for file in files:
+        result.append({
+            "filename": file.filename,
+            "content_type": file.content_type
+        })
+
+    return result
+```
+
+## Endpoint URL
+
+```http
+POST /uploadmultifile
+```
+
+## Example Request
 
 ```bash
 curl -X POST "http://localhost:8000/uploadmultifile" \
@@ -123,45 +284,229 @@ curl -X POST "http://localhost:8000/uploadmultifile" \
   -F "files=@file2.txt"
 ```
 
-**Response:**
+## Example Response
 
 ```json
 [
-  {"filename": "file1.txt", "content_type": "text/plain"},
-  {"filename": "file2.txt", "content_type": "text/plain"}
+  {
+    "filename": "file1.txt",
+    "content_type": "text/plain"
+  },
+  {
+    "filename": "file2.txt",
+    "content_type": "text/plain"
+  }
 ]
 ```
 
+## Explanation
+
+```python
+files: List[UploadFile]
+```
+
+This tells FastAPI to receive multiple uploaded files using the same form field name:
+
+```text
+files
+```
+
+Each uploaded file is handled as an `UploadFile` object.
+
 ---
 
-## Content-Type
+# 7. Content-Type for File Uploads
 
-For file uploads, the request must include:
+File uploads use:
 
-```
+```http
 Content-Type: multipart/form-data
 ```
 
-* Each file is sent as a separate part in the multipart request
+When using `curl` with `-F`, this header is generated automatically.
+
+Example:
+
+```bash
+curl -X POST "http://localhost:8000/uploadfile" \
+  -F "file=@example.txt"
+```
+
+The request sends the file as a multipart form field.
 
 ---
 
-## Running the Application
+# 8. Complete Recommended Version
 
-Start the service using `uvicorn`:
+```python
+from fastapi import FastAPI, File, UploadFile, HTTPException, status
+from typing import List
+
+app = FastAPI()
+
+MAX_FILE_SIZE = 5 * 1024 * 1024
+
+
+@app.get("/")
+def root():
+    return {
+        "message": "API is working"
+    }
+
+
+@app.post("/file")
+def upload_file_bytes(file: bytes = File(...)):
+    if len(file) > MAX_FILE_SIZE:
+        raise HTTPException(
+            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            detail="File is too large"
+        )
+
+    return {
+        "file_size": len(file)
+    }
+
+
+@app.post("/uploadfile")
+async def upload_file_uploadfile(file: UploadFile):
+    content = await file.read()
+
+    if len(content) > MAX_FILE_SIZE:
+        raise HTTPException(
+            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            detail="File is too large"
+        )
+
+    return {
+        "filename": file.filename,
+        "content_type": file.content_type,
+        "file_size": len(content)
+    }
+
+
+@app.post("/uploadmultifile")
+async def upload_multiple_files(files: List[UploadFile]):
+    result = []
+
+    for file in files:
+        content = await file.read()
+
+        if len(content) > MAX_FILE_SIZE:
+            raise HTTPException(
+                status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+                detail=f"File is too large: {file.filename}"
+            )
+
+        result.append({
+            "filename": file.filename,
+            "content_type": file.content_type,
+            "file_size": len(content)
+        })
+
+    return result
+```
+
+---
+
+# 9. Running the Application
+
+Start the FastAPI service using `uvicorn`:
 
 ```bash
 uvicorn main:app --reload
 ```
 
+The application will be available at:
+
+```text
+http://localhost:8000
+```
+
+Interactive API documentation:
+
+```text
+http://localhost:8000/docs
+```
+
+Alternative API documentation:
+
+```text
+http://localhost:8000/redoc
+```
+
 ---
 
-## Best Practices
+# 10. Testing with curl
 
-* Use `UploadFile` for large or multiple files
-* Validate file type and size on the server
-* Avoid loading very large files fully into memory
-* Use HTTPS for secure file transfer
-* Store files in dedicated storage (S3, local disk, or DB)
-* Return clear metadata (filename, size, content type) to clients
-* Support multiple files when needed for batch operations
+## Upload File as Bytes
+
+```bash
+curl -X POST "http://localhost:8000/file" \
+  -F "file=@example.txt"
+```
+
+## Upload Single File with `UploadFile`
+
+```bash
+curl -X POST "http://localhost:8000/uploadfile" \
+  -F "file=@example.txt"
+```
+
+## Upload Multiple Files
+
+```bash
+curl -X POST "http://localhost:8000/uploadmultifile" \
+  -F "files=@file1.txt" \
+  -F "files=@file2.txt"
+```
+
+---
+
+# 11. `bytes` vs `UploadFile`
+
+| Feature                    | `bytes`                     | `UploadFile`              |
+| -------------------------- | --------------------------- | ------------------------- |
+| File content               | Loaded directly into memory | Uses file-like object     |
+| Filename                   | Not available               | Available                 |
+| Content type               | Not available               | Available                 |
+| Best for                   | Small files                 | Large files and real APIs |
+| Metadata                   | No                          | Yes                       |
+| Recommended for production | Usually no                  | Yes                       |
+
+---
+
+# 12. Best Practices
+
+Use `UploadFile` for real-world APIs.
+
+Use `bytes` only for small files or simple testing.
+
+Validate file size on the server.
+
+Validate file type before processing or storing the file.
+
+Do not trust the uploaded filename.
+
+Do not store uploaded files directly using user-provided names.
+
+Avoid loading very large files fully into memory.
+
+Use HTTPS for secure file transfer.
+
+Store files in dedicated storage such as:
+
+```text
+Local disk
+Object storage such as S3 or MinIO
+Database storage when appropriate
+Network file storage
+```
+
+Return clear metadata to the client, such as:
+
+```text
+Filename
+Content type
+File size
+Upload status
+```
