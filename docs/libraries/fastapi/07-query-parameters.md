@@ -1,5 +1,10 @@
 # FastAPI – Query Parameters
 
+## Prerequisites
+
+* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — query strings in URLs
+* [10 – Type hints](../../fundamentals/10-type-hints.md) — `Optional`, `Annotated`, `str | None`
+
 This document demonstrates how to use **query parameters** in FastAPI using multiple typing styles, including:
 
 * Native Python union types (`str | None`)
@@ -60,7 +65,7 @@ def get_users_annotated(
 
 ## Query Parameter Overview
 
-Query parameters are key-value pairs appended to the URL after `?`.
+Query parameters are key-value pairs appended to the URL after `?`. See [12 – HTTP basics](../../fundamentals/12-http-basics.md#4-path-parameters-vs-query-parameters).
 
 **Example:**
 

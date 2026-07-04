@@ -1,5 +1,12 @@
 # FastAPI – Response Model and JSONResponse
 
+## Prerequisites
+
+* [14 – Pydantic basics](../../fundamentals/14-pydantic-basics.md) — `BaseModel`, input vs output models
+* [11 – JSON](../../fundamentals/11-json.md) — JSON responses
+* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — status codes
+* [05 – OOP](../../fundamentals/05-oop.md) — classes (if `BaseModel` is unfamiliar)
+
 ## Overview
 
 This document explains two important FastAPI response concepts:

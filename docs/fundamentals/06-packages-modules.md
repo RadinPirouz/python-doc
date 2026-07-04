@@ -207,6 +207,60 @@ if __name__ == "__main__":
 
 ---
 
+## 6. Virtual Environments and `pip`
+
+Third-party libraries (FastAPI, Pydantic, requests) are installed with **pip** into a **virtual environment** so each project has its own isolated dependencies.
+
+### Create a virtual environment
+
+From your project root:
+
+```bash
+python3 -m venv .venv
+```
+
+This creates a `.venv/` directory with a private Python interpreter and `pip`.
+
+### Activate the environment
+
+**Linux / macOS:**
+
+```bash
+source .venv/bin/activate
+```
+
+**Windows (PowerShell):**
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Your shell prompt usually changes to show the environment is active. Always activate before installing packages or running the project.
+
+### Install packages
+
+```bash
+pip install fastapi uvicorn
+```
+
+### Freeze dependencies
+
+Export exact versions for reproducible builds:
+
+```bash
+pip freeze > requirements.txt
+```
+
+Commit `requirements.txt` to version control. Do **not** commit `.venv/`.
+
+### Install from requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
 ## Summary
 
 * **Module**: A single `.py` file
@@ -215,4 +269,6 @@ if __name__ == "__main__":
 * `import module`: Imports the whole module
 * `from module import item`: Imports specific items
 * `__name__`: Identifies how a file is executed
+* **Virtual environment**: Isolated Python environment per project
+* **pip**: Installs and manages third-party packages
 

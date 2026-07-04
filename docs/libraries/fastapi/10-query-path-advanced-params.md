@@ -1,5 +1,11 @@
 # FastAPI – Advanced Path and Query Parameters
 
+## Prerequisites
+
+* [10 – Type hints](../../fundamentals/10-type-hints.md) — `Annotated`, the ellipsis (`...`)
+* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — path vs query parameters
+* [07-query-parameters](07-query-parameters.md) — basic query parameter patterns
+
 This document demonstrates advanced usage of **path parameters** and **query parameters** in FastAPI, including:
 
 * Validation rules
@@ -151,6 +157,8 @@ Query(
 ---
 
 ## Path vs Query Parameters
+
+See [12 – HTTP basics](../../fundamentals/12-http-basics.md#4-path-parameters-vs-query-parameters) for the general rules. FastAPI-specific details below.
 
 ### 1. Path Parameters
 

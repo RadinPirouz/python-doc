@@ -1,5 +1,12 @@
 # FastAPI – POST Endpoint and JSON Input
 
+## Prerequisites
+
+* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — POST method and request body
+* [11 – JSON](../../fundamentals/11-json.md) — JSON request format
+* [14 – Pydantic basics](../../fundamentals/14-pydantic-basics.md) — `BaseModel` for request validation
+* [10 – Type hints](../../fundamentals/10-type-hints.md) — `name: str`, `age: int`
+
 ## Overview
 
 This document explains how to create a `POST` endpoint in FastAPI for adding new users. It covers two approaches:
@@ -126,9 +133,7 @@ class User(BaseModel):
     age: int
 ```
 
-This creates a request model named `User`.
-
-The model defines the expected structure of the JSON input:
+This defines a **Pydantic model** — see [14 – Pydantic basics](../../fundamentals/14-pydantic-basics.md). The model describes the expected JSON body:
 
 ```json
 {
@@ -137,12 +142,7 @@ The model defines the expected structure of the JSON input:
 }
 ```
 
-FastAPI uses this model to:
-
-Validate incoming data
-Convert JSON into a Python object
-Generate automatic API documentation
-Return useful validation errors when input is invalid
+FastAPI uses this model to validate incoming data, convert JSON into a Python object, generate API documentation, and return validation errors when input is invalid.
 
 ---
 

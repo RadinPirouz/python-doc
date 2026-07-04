@@ -1,5 +1,11 @@
 # FastAPI – POST Requests with JSON Body (`Body`)
 
+## Prerequisites
+
+* [11 – JSON](../../fundamentals/11-json.md) — JSON request bodies
+* [14 – Pydantic basics](../../fundamentals/14-pydantic-basics.md) — prefer models over raw `Body()` for complex data
+* [11-post-types](11-post-types.md) — Content-Type overview
+
 This document demonstrates how to receive data from the **request body** using `Body()` in FastAPI.
 This approach is commonly used when clients send **JSON payloads**.
 

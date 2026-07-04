@@ -1,5 +1,12 @@
 # FastAPI – Simple Route Example
 
+## Prerequisites
+
+* [06 – Packages and modules](../../fundamentals/06-packages-modules.md) — `import` statements
+* [08 – Decorators](../../fundamentals/08-decorators.md) — `@app.get` syntax
+* [11 – JSON](../../fundamentals/11-json.md) — why returning a dict produces JSON
+* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — GET requests and URLs
+
 ## Overview
 
 This document explains how to create a basic FastAPI application with a single HTTP route and how to run it using `uvicorn`.
@@ -63,21 +70,9 @@ def home_dir():
     return {"message": "Home Page"}
 ```
 
-This creates an HTTP `GET` endpoint at the root path:
+This creates an HTTP `GET` endpoint at the root path (`GET /`). When a client requests `/`, FastAPI runs `home_dir` and returns the result as JSON. See [12 – HTTP basics](../../fundamentals/12-http-basics.md) for how GET requests work and [11 – JSON](../../fundamentals/11-json.md) for how dictionaries become JSON responses.
 
-```http
-GET /
-```
-
-When a user sends a request to `/`, the `home_dir` function is executed.
-
-The function returns a Python dictionary:
-
-```python
-{"message": "Home Page"}
-```
-
-FastAPI automatically converts this dictionary into a JSON response.
+The `@app.get` line is a **decorator** — see [08 – Decorators](../../fundamentals/08-decorators.md) if that syntax is new.
 
 ---
 

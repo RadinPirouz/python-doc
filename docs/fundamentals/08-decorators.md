@@ -180,3 +180,23 @@ def check_number(func):
 * `@decorator` is syntactic sugar
 * Commonly used for validation, logging, and access control
 * Best practice is to use `*args`, `**kwargs`, and `functools.wraps`
+
+---
+
+## 9. Decorators in FastAPI
+
+FastAPI uses decorators to register HTTP endpoints:
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/users")
+def list_users():
+    return []
+```
+
+`@app.get("/users")` tells FastAPI: "when a GET request arrives at `/users`, call `list_users`." The same pattern applies to `@app.post`, `@app.put`, and `@app.delete`.
+
+See [FastAPI – Simple route](../libraries/fastapi/02-simple-route.md) for a full example.

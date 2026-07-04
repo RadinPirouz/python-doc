@@ -1,5 +1,12 @@
 # FastAPI – POST Requests with File Uploads
 
+## Prerequisites
+
+* [13 – Async/await](../../fundamentals/13-async-await.md) — `async def`, `await file.read()`
+* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — `multipart/form-data`
+* [06 – Packages and modules](../../fundamentals/06-packages-modules.md) — `pip install`
+* [11-post-types](11-post-types.md) — multipart Content-Type
+
 ## Overview
 
 This document explains how to handle file uploads in FastAPI using `POST` requests.

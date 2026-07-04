@@ -1,7 +1,10 @@
 # FastAPI – Environment Setup
 
 This document describes the initial setup required to prepare a Python environment for developing a FastAPI application.
-The steps below ensure isolation, dependency management, and reproducibility across environments.
+
+## Prerequisites
+
+* [06 – Packages, modules, venv, and pip](../../fundamentals/06-packages-modules.md) — virtual environments and `pip` (covered in detail there)
 
 ---
 
@@ -23,7 +26,7 @@ python3 --version
 
 ## Step 1: Create a Virtual Environment
 
-A virtual environment isolates project dependencies and prevents conflicts with system-wide Python packages.
+See [06 – Packages, modules, venv, and pip](../../fundamentals/06-packages-modules.md) for a full explanation of virtual environments.
 
 From the project root directory, run:
 

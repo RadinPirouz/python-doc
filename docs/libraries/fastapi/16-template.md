@@ -1,5 +1,11 @@
 # FastAPI – HTML Templates with Jinja2
 
+## Prerequisites
+
+* [03-get-method](03-get-method.md) — path parameters (`/items/{id}`)
+* [13 – Async/await](../../fundamentals/13-async-await.md) — `async def` endpoints
+* [01 – Data types](../../fundamentals/01-data-types.md) — dictionaries for template `context`
+
 ## Overview
 
 FastAPI can return HTML pages instead of JSON by using a template engine. The built-in integration uses **Jinja2**, which lets you render dynamic HTML from template files and pass Python variables into the page.

@@ -1,5 +1,14 @@
 # FastAPI – GET Endpoints and JSON Responses
 
+## Prerequisites
+
+* [01 – Data types](../../fundamentals/01-data-types.md) — lists and dictionaries
+* [03 – Loops](../../fundamentals/03-loops.md) — `for` loops over lists
+* [10 – Type hints](../../fundamentals/10-type-hints.md) — `name_input: str`
+* [11 – JSON](../../fundamentals/11-json.md) — dict/list to JSON
+* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — GET, path parameters
+* [07 – Error handling](../../fundamentals/07-error-handling.md) — raising exceptions
+
 ## Overview
 
 This document explains how to create multiple `GET` endpoints in FastAPI, return JSON responses, and use path parameters to retrieve specific data from an in-memory dataset.
@@ -80,26 +89,7 @@ users = [
 ]
 ```
 
-This list is used as temporary storage.
-
-Each user is represented as a Python dictionary.
-
-FastAPI can automatically convert these dictionaries into JSON responses.
-
-Example Python object:
-
-```python
-{"name": "abbas", "age": 20}
-```
-
-Example JSON response:
-
-```json
-{
-  "name": "abbas",
-  "age": 20
-}
-```
+This list acts as temporary storage. Each user is a Python dictionary — see [01 – Data types](../../fundamentals/01-data-types.md). FastAPI serializes it to JSON automatically — see [11 – JSON](../../fundamentals/11-json.md).
 
 ## Important Note
 
@@ -107,7 +97,7 @@ This in-memory list is only suitable for learning, development, and testing.
 
 If the application restarts, the data will be reset.
 
-For production, use a persistent database such as PostgreSQL, MySQL, MongoDB, or another database system.
+Earlier FastAPI chapters (03–06) use a Python list as temporary storage. For production, use a persistent database such as PostgreSQL, MySQL, or SQLite. See [15 – Databases](../../fundamentals/15-databases.md) and [17 – SQLModel](../libraries/fastapi/17-sqlmodel.md).
 
 ---
 
@@ -271,7 +261,7 @@ However, in a real API, it is better to return a proper `404 Not Found` response
 
 # 10. Path Parameters
 
-A path parameter is a dynamic part of the URL.
+A **path parameter** is a dynamic segment in the URL path. See [12 – HTTP basics](../../fundamentals/12-http-basics.md#4-path-parameters-vs-query-parameters) for the general concept.
 
 In this route:
 
@@ -279,27 +269,9 @@ In this route:
 @app.get("/user/{name_input}")
 ```
 
-`name_input` is a path parameter.
+`name_input` is a path parameter. For `GET /user/mmd`, FastAPI passes `name_input = "mmd"` into the function.
 
-Example:
-
-```http
-GET /user/mmd
-```
-
-FastAPI extracts the value from the URL and passes it to the function:
-
-```python
-def get_user_by_name(name_input: str):
-```
-
-Because `name_input` is defined as a string:
-
-```python
-name_input: str
-```
-
-FastAPI validates it as a string.
+The type hint `name_input: str` tells FastAPI to validate the value as a string — see [10 – Type hints](../../fundamentals/10-type-hints.md).
 
 ---
 

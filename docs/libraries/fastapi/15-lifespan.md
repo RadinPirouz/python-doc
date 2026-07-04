@@ -1,5 +1,10 @@
 # FastAPI – Application Lifespan, Startup, and Shutdown Events
 
+## Prerequisites
+
+* [13 – Async/await](../../fundamentals/13-async-await.md) — `asynccontextmanager`, `yield`, startup/shutdown pattern
+* [08 – Decorators](../../fundamentals/08-decorators.md) — decorator syntax (for the deprecated `@app.on_event`)
+
 ## Overview
 
 FastAPI allows you to execute code when the application starts and when it shuts down. This is useful for initializing and cleaning up shared resources such as database connections, cache clients, machine learning models, message queues, or background services.
@@ -77,7 +82,7 @@ app = FastAPI(lifespan=lifespan)
 
 # 3. How Lifespan Works
 
-The `lifespan` function has two main sections:
+The `lifespan` function has two main sections separated by `yield`. See [13 – Async/await](../../fundamentals/13-async-await.md#6-yield-in-context-managers) for how `yield` splits setup from teardown.
 
 ```python
 @asynccontextmanager
