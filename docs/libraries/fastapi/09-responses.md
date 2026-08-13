@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-* [14 – Pydantic basics](../../fundamentals/14-pydantic-basics.md) — `BaseModel`, input vs output models
-* [11 – JSON](../../fundamentals/11-json.md) — JSON responses
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — status codes
-* [05 – OOP](../../fundamentals/05-oop.md) — classes (if `BaseModel` is unfamiliar)
+* [36 – Pydantic basics](../../fundamentals/36-pydantic-basics.md) — `BaseModel`, input vs output models
+* [33 – JSON](../../fundamentals/33-json.md) — JSON responses
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — status codes
+* [19 – Classes](../../fundamentals/19-class.md) — classes (if `BaseModel` is unfamiliar)
 
 ## Overview
 

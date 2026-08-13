@@ -2,12 +2,12 @@
 
 ## Prerequisites
 
-* [01 – Data types](../../fundamentals/01-data-types.md) — lists and dictionaries
-* [03 – Loops](../../fundamentals/03-loops.md) — `for` loops over lists
-* [10 – Type hints](../../fundamentals/10-type-hints.md) — `name_input: str`
-* [11 – JSON](../../fundamentals/11-json.md) — dict/list to JSON
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — GET, path parameters
-* [07 – Error handling](../../fundamentals/07-error-handling.md) — raising exceptions
+* [03 – Lists](../../fundamentals/03-list.md) and [13 – Dictionaries](../../fundamentals/13-dict.md) — lists and dictionaries
+* [06 – For loops](../../fundamentals/06-for.md) — `for` loops over lists
+* [32 – Type hints](../../fundamentals/32-type-hints.md) — `name_input: str`
+* [33 – JSON](../../fundamentals/33-json.md) — dict/list to JSON
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — GET, path parameters
+* [27 – Exception handling](../../fundamentals/27-exception.md) — raising exceptions
 
 ## Overview
 
@@ -89,7 +89,7 @@ users = [
 ]
 ```
 
-This list acts as temporary storage. Each user is a Python dictionary — see [01 – Data types](../../fundamentals/01-data-types.md). FastAPI serializes it to JSON automatically — see [11 – JSON](../../fundamentals/11-json.md).
+This list acts as temporary storage. Each user is a Python dictionary — see [13 – Dictionaries](../../fundamentals/13-dict.md). FastAPI serializes it to JSON automatically — see [33 – JSON](../../fundamentals/33-json.md).
 
 ## Important Note
 
@@ -97,7 +97,7 @@ This in-memory list is only suitable for learning, development, and testing.
 
 If the application restarts, the data will be reset.
 
-Earlier FastAPI chapters (03–06) use a Python list as temporary storage. For production, use a persistent database such as PostgreSQL, MySQL, or SQLite. See [15 – Databases](../../fundamentals/15-databases.md) and [17 – SQLModel](../libraries/fastapi/17-sqlmodel.md).
+Earlier FastAPI chapters (03–06) use a Python list as temporary storage. For production, use a persistent database such as PostgreSQL, MySQL, or SQLite. See [37 – Databases](../../fundamentals/37-databases.md) and [17 – SQLModel](../libraries/fastapi/17-sqlmodel.md).
 
 ---
 
@@ -261,7 +261,7 @@ However, in a real API, it is better to return a proper `404 Not Found` response
 
 # 10. Path Parameters
 
-A **path parameter** is a dynamic segment in the URL path. See [12 – HTTP basics](../../fundamentals/12-http-basics.md#4-path-parameters-vs-query-parameters) for the general concept.
+A **path parameter** is a dynamic segment in the URL path. See [34 – HTTP basics](../../fundamentals/34-http-basics.md#4-path-parameters-vs-query-parameters) for the general concept.
 
 In this route:
 
@@ -271,7 +271,7 @@ In this route:
 
 `name_input` is a path parameter. For `GET /user/mmd`, FastAPI passes `name_input = "mmd"` into the function.
 
-The type hint `name_input: str` tells FastAPI to validate the value as a string — see [10 – Type hints](../../fundamentals/10-type-hints.md).
+The type hint `name_input: str` tells FastAPI to validate the value as a string — see [32 – Type hints](../../fundamentals/32-type-hints.md).
 
 ---
 

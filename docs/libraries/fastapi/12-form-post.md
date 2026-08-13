@@ -3,8 +3,8 @@
 ## Prerequisites
 
 * [11-post-types](11-post-types.md) — form `Content-Type` overview
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — POST request body
-* [10 – Type hints](../../fundamentals/10-type-hints.md) — parameter defaults
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — POST request body
+* [32 – Type hints](../../fundamentals/32-type-hints.md) — parameter defaults
 
 This document demonstrates how to handle **form-based POST requests** in FastAPI using the `Form()` dependency.
 Form data is commonly used in **HTML forms**, authentication flows, and legacy systems.

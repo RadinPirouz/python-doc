@@ -1,8 +1,8 @@
-# 12 – HTTP Basics
+# 34 – HTTP Basics
 
 This document explains **HTTP** (Hypertext Transfer Protocol) — how web browsers, mobile apps, and other clients communicate with servers. Every FastAPI endpoint is an HTTP handler.
 
-No prior networking knowledge is required. Read [11-json.md](11-json.md) next if you want to understand the data format APIs use.
+No prior networking knowledge is required. Read [33-json.md](33-json.md) next if you want to understand the data format APIs use.
 
 ---
 
@@ -63,7 +63,7 @@ FastAPI maps methods to functions with decorators:
 @app.delete("/users/{id}")
 ```
 
-See [08-decorators.md](08-decorators.md) if decorators are new to you.
+See [31-decorators.md](31-decorators.md) if decorators are new to you.
 
 ---
 

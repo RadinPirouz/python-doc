@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-* [13 – Async/await](../../fundamentals/13-async-await.md) — `asynccontextmanager`, `yield`, startup/shutdown pattern
-* [08 – Decorators](../../fundamentals/08-decorators.md) — decorator syntax (for the deprecated `@app.on_event`)
+* [35 – Async/await](../../fundamentals/35-async-await.md) — `asynccontextmanager`, `yield`, startup/shutdown pattern
+* [31 – Decorators](../../fundamentals/31-decorators.md) — decorator syntax (for the deprecated `@app.on_event`)
 
 ## Overview
 
@@ -82,7 +82,7 @@ app = FastAPI(lifespan=lifespan)
 
 # 3. How Lifespan Works
 
-The `lifespan` function has two main sections separated by `yield`. See [13 – Async/await](../../fundamentals/13-async-await.md#6-yield-in-context-managers) for how `yield` splits setup from teardown.
+The `lifespan` function has two main sections separated by `yield`. See [35 – Async/await](../../fundamentals/35-async-await.md#6-yield-in-context-managers) for how `yield` splits setup from teardown.
 
 ```python
 @asynccontextmanager

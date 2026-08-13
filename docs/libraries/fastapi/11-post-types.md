@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — POST, request body, headers
-* [11 – JSON](../../fundamentals/11-json.md) — JSON as the default API format
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — POST, request body, headers
+* [33 – JSON](../../fundamentals/33-json.md) — JSON as the default API format
 
 This document explains the **body types of POST requests** and the most common **Content-Types** used in APIs.
 Understanding these formats is essential for building interoperable and production-ready FastAPI services.

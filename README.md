@@ -15,17 +15,12 @@ Personal reference notes and examples for Python fundamentals and popular librar
 
 ### Fundamentals
 
+See the full course index in [docs/fundamentals/README.md](docs/fundamentals/README.md).
+
 | # | Topic |
 |---|-------|
-| 01 | [Data Types](docs/fundamentals/01-data-types.md) |
-| 02 | [File I/O](docs/fundamentals/02-file-io.md) |
-| 03 | [Loops](docs/fundamentals/03-loops.md) |
-| 04 | [Operators](docs/fundamentals/04-operators.md) |
-| 05 | [OOP](docs/fundamentals/05-oop.md) |
-| 06 | [Packages & Modules](docs/fundamentals/06-packages-modules.md) |
-| 07 | [Error Handling](docs/fundamentals/07-error-handling.md) |
-| 08 | [Decorators](docs/fundamentals/08-decorators.md) |
-| 09 | [Standard Library](docs/fundamentals/09-standard-library.md) |
+| 00–30 | Core Python course (variables → venv) |
+| 31+ | FastAPI prerequisites (decorators, type hints, JSON, HTTP, async, Pydantic, databases) |
 
 ### Libraries
 

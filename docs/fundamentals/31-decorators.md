@@ -1,4 +1,4 @@
-# 08 – Decorators in Python
+# 31 – Decorators in Python
 
 This document explains **decorators**, how they work, and how they are used to extend function behavior without modifying the original function code.
 

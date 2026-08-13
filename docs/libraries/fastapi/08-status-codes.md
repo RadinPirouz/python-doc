@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — status codes (200, 404, etc.)
-* [07 – Error handling](../../fundamentals/07-error-handling.md) — exceptions and raising errors
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — status codes (200, 404, etc.)
+* [27 – Exception handling](../../fundamentals/27-exception.md) — exceptions and raising errors
 
 This document demonstrates how to use **HTTP status codes** in FastAPI to accurately represent the result of an API operation.
 Correct status codes improve API reliability, observability, and client-side behavior.
@@ -71,7 +71,7 @@ def delete_user(target_name: str):
 
 ## Status Code Overview
 
-HTTP status codes communicate the result of an API request. See [12 – HTTP basics](../../fundamentals/12-http-basics.md#7-http-status-codes) for a full explanation.
+HTTP status codes communicate the result of an API request. See [34 – HTTP basics](../../fundamentals/34-http-basics.md#7-http-status-codes) for a full explanation.
 
 | Code | Meaning    | Usage                             |
 | ---- | ---------- | --------------------------------- |

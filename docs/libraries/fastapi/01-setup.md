@@ -4,7 +4,7 @@ This document describes the initial setup required to prepare a Python environme
 
 ## Prerequisites
 
-* [06 – Packages, modules, venv, and pip](../../fundamentals/06-packages-modules.md) — virtual environments and `pip` (covered in detail there)
+* [30 – Virtual environments and pip](../../fundamentals/30-venv.md) — virtual environments and `pip` (covered in detail there)
 
 ---
 
@@ -26,7 +26,7 @@ python3 --version
 
 ## Step 1: Create a Virtual Environment
 
-See [06 – Packages, modules, venv, and pip](../../fundamentals/06-packages-modules.md) for a full explanation of virtual environments.
+See [30 – Virtual environments and pip](../../fundamentals/30-venv.md) for a full explanation of virtual environments.
 
 From the project root directory, run:
 

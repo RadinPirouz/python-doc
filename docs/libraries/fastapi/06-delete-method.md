@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — DELETE method
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — DELETE method
 * Chapters [03](03-get-method.md)–[05](05-put-method.md) — prior CRUD examples
 
 This document demonstrates how to use the **HTTP DELETE method** in FastAPI to remove an existing resource.

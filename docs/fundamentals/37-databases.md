@@ -1,8 +1,8 @@
-# 15 – Databases and SQL Basics
+# 37 – Databases and SQL Basics
 
 This document explains **relational databases** and **SQL** at a conceptual level. You need these ideas before using [SQLModel](../libraries/fastapi/17-sqlmodel.md) with FastAPI.
 
-**Prerequisites:** [01-data-types.md](01-data-types.md) (dictionaries and lists), [14-pydantic-basics.md](14-pydantic-basics.md) (structured data models).
+**Prerequisites:** [03-list.md](03-list.md) and [13-dict.md](13-dict.md) (dictionaries and lists), [36-pydantic-basics.md](36-pydantic-basics.md) (structured data models).
 
 ---
 
@@ -180,7 +180,7 @@ In APIs you often need different shapes for input and output:
 | **Public model** | What the client receives | `UserPublic` — no `password_hash` |
 | **Update model** | Partial updates (PATCH) | `UserUpdate` — all fields optional |
 
-See [14 – Pydantic basics](14-pydantic-basics.md) for the same input/output separation pattern. SQLModel combines Pydantic models with database table definitions.
+See [36 – Pydantic basics](36-pydantic-basics.md) for the same input/output separation pattern. SQLModel combines Pydantic models with database table definitions.
 
 ---
 

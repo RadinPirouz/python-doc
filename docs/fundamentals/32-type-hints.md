@@ -1,8 +1,8 @@
-# 10 – Type Hints in Python
+# 32 – Type Hints in Python
 
 This document explains **type hints** — annotations that describe what type of value a variable, parameter, or return value should be. FastAPI relies heavily on type hints to validate requests, generate documentation, and convert data automatically.
 
-If you are new to Python, read [01-data-types.md](01-data-types.md) and [05-oop.md](05-oop.md) first.
+If you are new to Python, read [01-variables.md](01-variables.md), [03-list.md](03-list.md), and [19-class.md](19-class.md) first.
 
 ---
 

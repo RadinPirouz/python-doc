@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — PUT method, path and query parameters
-* [10 – Type hints](../../fundamentals/10-type-hints.md) — parameter types
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — PUT method, path and query parameters
+* [32 – Type hints](../../fundamentals/32-type-hints.md) — parameter types
 * Chapters [03-get-method](03-get-method.md) and [04-post-method](04-post-method.md) — prior CRUD examples
 
 This document demonstrates how to use the **HTTP PUT method** in FastAPI to update an existing resource.

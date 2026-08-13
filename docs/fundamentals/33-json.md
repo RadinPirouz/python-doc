@@ -1,8 +1,8 @@
-# 11 – JSON in Python
+# 33 – JSON in Python
 
 This document explains **JSON** (JavaScript Object Notation) — the standard text format for exchanging data between clients and servers. FastAPI APIs almost always send and receive JSON.
 
-Read [01-data-types.md](01-data-types.md) (dictionaries and lists) before this chapter.
+Read [03-list.md](03-list.md) and [13-dict.md](13-dict.md) (dictionaries and lists) before this chapter.
 
 ---
 
@@ -132,7 +132,7 @@ Content-Type: application/json
 {"name": "ali", "age": 25}
 ```
 
-In FastAPI, you define the expected shape with a Pydantic model (see [14-pydantic-basics.md](14-pydantic-basics.md)) or type hints. FastAPI parses the JSON body and validates it before your function runs.
+In FastAPI, you define the expected shape with a Pydantic model (see [36-pydantic-basics.md](36-pydantic-basics.md)) or type hints. FastAPI parses the JSON body and validates it before your function runs.
 
 ---
 
@@ -171,7 +171,7 @@ The returned dictionary becomes JSON automatically.
 | XML | `application/xml` | Legacy enterprise systems |
 | Plain text | `text/plain` | Simple messages |
 
-See [12-http-basics.md](12-http-basics.md) for how these fit into HTTP requests.
+See [34-http-basics.md](34-http-basics.md) for how these fit into HTTP requests.
 
 ---
 

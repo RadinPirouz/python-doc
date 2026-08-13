@@ -3,8 +3,8 @@
 ## Prerequisites
 
 * [03-get-method](03-get-method.md) — path parameters (`/items/{id}`)
-* [13 – Async/await](../../fundamentals/13-async-await.md) — `async def` endpoints
-* [01 – Data types](../../fundamentals/01-data-types.md) — dictionaries for template `context`
+* [35 – Async/await](../../fundamentals/35-async-await.md) — `async def` endpoints
+* [13 – Dictionaries](../../fundamentals/13-dict.md) — dictionaries for template `context`
 
 ## Overview
 

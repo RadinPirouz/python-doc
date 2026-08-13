@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-* [13 – Async/await](../../fundamentals/13-async-await.md) — `async def`, `await file.read()`
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — `multipart/form-data`
-* [06 – Packages and modules](../../fundamentals/06-packages-modules.md) — `pip install`
+* [35 – Async/await](../../fundamentals/35-async-await.md) — `async def`, `await file.read()`
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — `multipart/form-data`
+* [30 – Virtual environments and pip](../../fundamentals/30-venv.md) — `pip install`
 * [11-post-types](11-post-types.md) — multipart Content-Type
 
 ## Overview

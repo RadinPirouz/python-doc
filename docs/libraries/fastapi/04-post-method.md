@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — POST method and request body
-* [11 – JSON](../../fundamentals/11-json.md) — JSON request format
-* [14 – Pydantic basics](../../fundamentals/14-pydantic-basics.md) — `BaseModel` for request validation
-* [10 – Type hints](../../fundamentals/10-type-hints.md) — `name: str`, `age: int`
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — POST method and request body
+* [33 – JSON](../../fundamentals/33-json.md) — JSON request format
+* [36 – Pydantic basics](../../fundamentals/36-pydantic-basics.md) — `BaseModel` for request validation
+* [32 – Type hints](../../fundamentals/32-type-hints.md) — `name: str`, `age: int`
 
 ## Overview
 
@@ -133,7 +133,7 @@ class User(BaseModel):
     age: int
 ```
 
-This defines a **Pydantic model** — see [14 – Pydantic basics](../../fundamentals/14-pydantic-basics.md). The model describes the expected JSON body:
+This defines a **Pydantic model** — see [36 – Pydantic basics](../../fundamentals/36-pydantic-basics.md). The model describes the expected JSON body:
 
 ```json
 {

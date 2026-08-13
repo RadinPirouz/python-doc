@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-* [06 – Packages and modules](../../fundamentals/06-packages-modules.md) — `import` statements
-* [08 – Decorators](../../fundamentals/08-decorators.md) — `@app.get` syntax
-* [11 – JSON](../../fundamentals/11-json.md) — why returning a dict produces JSON
-* [12 – HTTP basics](../../fundamentals/12-http-basics.md) — GET requests and URLs
+* [14 – Modules](../../fundamentals/14-module.md) — `import` statements
+* [31 – Decorators](../../fundamentals/31-decorators.md) — `@app.get` syntax
+* [33 – JSON](../../fundamentals/33-json.md) — why returning a dict produces JSON
+* [34 – HTTP basics](../../fundamentals/34-http-basics.md) — GET requests and URLs
 
 ## Overview
 
@@ -70,9 +70,9 @@ def home_dir():
     return {"message": "Home Page"}
 ```
 
-This creates an HTTP `GET` endpoint at the root path (`GET /`). When a client requests `/`, FastAPI runs `home_dir` and returns the result as JSON. See [12 – HTTP basics](../../fundamentals/12-http-basics.md) for how GET requests work and [11 – JSON](../../fundamentals/11-json.md) for how dictionaries become JSON responses.
+This creates an HTTP `GET` endpoint at the root path (`GET /`). When a client requests `/`, FastAPI runs `home_dir` and returns the result as JSON. See [34 – HTTP basics](../../fundamentals/34-http-basics.md) for how GET requests work and [33 – JSON](../../fundamentals/33-json.md) for how dictionaries become JSON responses.
 
-The `@app.get` line is a **decorator** — see [08 – Decorators](../../fundamentals/08-decorators.md) if that syntax is new.
+The `@app.get` line is a **decorator** — see [31 – Decorators](../../fundamentals/31-decorators.md) if that syntax is new.
 
 ---
 

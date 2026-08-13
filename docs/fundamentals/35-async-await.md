@@ -1,8 +1,8 @@
-# 13 – Async/Await and Context Managers
+# 35 – Async/Await and Context Managers
 
 This document explains **asynchronous programming** and **context managers** in Python. FastAPI uses both: `async def` endpoints for file uploads, and `asynccontextmanager` for application startup/shutdown (lifespan).
 
-Read [08-decorators.md](08-decorators.md) and [02-file-io.md](02-file-io.md) (the `with` statement) first.
+Read [31-decorators.md](31-decorators.md) and [17-files.md](17-files.md) (the `with` statement) first.
 
 ---
 

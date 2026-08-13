@@ -1,8 +1,8 @@
-# 14 – Pydantic Basics
+# 36 – Pydantic Basics
 
 This document explains **Pydantic** — a library for defining data models with automatic validation. FastAPI uses Pydantic to parse JSON request bodies, validate input, and shape API responses.
 
-**Prerequisites:** [05-oop.md](05-oop.md) (classes), [10-type-hints.md](10-type-hints.md) (type hints), [11-json.md](11-json.md) (JSON).
+**Prerequisites:** [19-class.md](19-class.md) (classes), [32-type-hints.md](32-type-hints.md) (type hints), [33-json.md](33-json.md) (JSON).
 
 Install Pydantic (included when you install FastAPI):
 
@@ -253,4 +253,4 @@ class Good(BaseModel):
 * Use separate input/output models to hide sensitive fields.
 * FastAPI uses Pydantic models for request bodies, response filtering, and `/docs` generation.
 
-For database-backed APIs, see [15 – Databases](15-databases.md) and [SQLModel with FastAPI](../libraries/fastapi/17-sqlmodel.md).
+For database-backed APIs, see [37 – Databases](37-databases.md) and [SQLModel with FastAPI](../libraries/fastapi/17-sqlmodel.md).

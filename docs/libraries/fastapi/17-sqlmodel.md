@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
-* [15 – Databases and SQL basics](../../fundamentals/15-databases.md) — tables, sessions, ORM concepts
-* [14 – Pydantic basics](../../fundamentals/14-pydantic-basics.md) — `BaseModel`, validation, input/output models
-* [10 – Type hints](../../fundamentals/10-type-hints.md) — `Annotated`, `Depends`
-* [13 – Async/await](../../fundamentals/13-async-await.md) — `yield` in dependencies and lifespan
+* [37 – Databases and SQL basics](../../fundamentals/37-databases.md) — tables, sessions, ORM concepts
+* [36 – Pydantic basics](../../fundamentals/36-pydantic-basics.md) — `BaseModel`, validation, input/output models
+* [32 – Type hints](../../fundamentals/32-type-hints.md) — `Annotated`, `Depends`
+* [35 – Async/await](../../fundamentals/35-async-await.md) — `yield` in dependencies and lifespan
 * [15-lifespan](15-lifespan.md) — startup hooks (create tables on boot)
 * Chapters [03](03-get-method.md)–[09](09-responses.md) — HTTP methods, status codes, `response_model`
 
@@ -50,7 +50,7 @@ project/
 
 # 3. Define Models
 
-Use separate models for the database table, API input, and API output. See [15 – Databases](../../fundamentals/15-databases.md#7-table-models-vs-api-models).
+Use separate models for the database table, API input, and API output. See [37 – Databases](../../fundamentals/37-databases.md#7-table-models-vs-api-models).
 
 ```python
 from sqlmodel import Field, SQLModel
@@ -94,7 +94,7 @@ class UserUpdate(SQLModel):
 
 # 4. Create the Database Engine
 
-The **engine** opens a connection to the database. See [15 – Databases](../../fundamentals/15-databases.md#5-engine-session-and-transactions).
+The **engine** opens a connection to the database. See [37 – Databases](../../fundamentals/37-databases.md#5-engine-session-and-transactions).
 
 ```python
 from sqlmodel import create_engine
@@ -155,7 +155,7 @@ Do not use both `lifespan` and `@app.on_event` in the same app.
 
 # 6. Database Session
 
-A **session** is a workspace for database operations during one request. See [15 – Databases](../../fundamentals/15-databases.md#5-engine-session-and-transactions).
+A **session** is a workspace for database operations during one request. See [37 – Databases](../../fundamentals/37-databases.md#5-engine-session-and-transactions).
 
 ```python
 from sqlmodel import Session
@@ -172,7 +172,7 @@ def get_session():
 | `yield session` | Hand the session to the endpoint |
 | After request ends | Context manager closes the session |
 
-Using `yield` means FastAPI runs cleanup after the response is sent — the same pattern as [13 – Async/await](../../fundamentals/13-async-await.md#8-generators-and-yield-in-dependencies).
+Using `yield` means FastAPI runs cleanup after the response is sent — the same pattern as [35 – Async/await](../../fundamentals/35-async-await.md#8-generators-and-yield-in-dependencies).
 
 ---
 
@@ -554,4 +554,4 @@ Do not commit `database.db` or production credentials to version control.
 
 * [SQLModel documentation](https://sqlmodel.tiangolo.com/)
 * [SQLModel + FastAPI tutorial](https://sqlmodel.tiangolo.com/tutorial/fastapi/)
-* [15 – Databases and SQL basics](../../fundamentals/15-databases.md)
+* [37 – Databases and SQL basics](../../fundamentals/37-databases.md)
